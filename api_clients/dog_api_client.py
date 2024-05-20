@@ -29,9 +29,10 @@ class DogApiClient:
         else:
             return []
 
-
-    def get_dog_by_breed(self, breeds_list):
-        response = self.session.get(url=f"{self.base_url}/breed/{breeds_list}/images")
+    def get_dog_by_breed(self, breed):
+        breeds_list = self.get_all_breeds_list()
+        for breed in breeds_list:
+            response = self.session.get(url=f"{self.base_url}/breed/{breed}/images")
 
         return response
 

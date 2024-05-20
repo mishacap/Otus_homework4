@@ -1,5 +1,7 @@
 import pytest
 
+from conftest import dog_api_client
+
 import requests
 
 import json
@@ -7,7 +9,7 @@ import json
 from jsonschema import validate
 
 from api_clients.dog_api_client import DogApiClient
-from schemas import get_random_dog_schema, get_all_breeds_schema
+from schemas import get_random_dog_schema, get_all_breeds_schema, get_dog_by_breed
 
 
 def test_get_random_dog(dog_api_client):
@@ -26,6 +28,19 @@ def test_get_all_breeds(dog_api_client):
     assert json_response["status"] == "success"
     assert response.json()
     validate(instance=json_response, schema=get_all_breeds_schema)
+
+
+@pytest.mark.parametrize("breed", DogApiClient().get_all_breeds_list())
+def test_get_dog_by_breed(breed):
+    dog_api_client = DogApiClient()
+    response = dog_api_client.get_dog_by_breed(breed)
+    json_response = response.json()
+    assert response.status_code == 200
+    assert json_response["status"] == "success"
+    assert response.json()
+    validate(instance=json_response, schema=get_dog_by_breed)
+
+
 
 
 
