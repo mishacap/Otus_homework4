@@ -22,18 +22,14 @@ class DogApiClient:
 
     def get_all_breeds_list(self):
         response = self.session.get(url=f"{self.base_url}/breeds/list/all")
-        if response.status_code == 200:
-            data = response.json()
-            breeds_list = list(data["message"].keys())
-            return breeds_list
+        json_response = response.json()
+        if response.status_code == 200 and json_response["status"] == "success":
+            breeds = json_response["message"].keys()
+            return list(breeds)
         else:
             return []
 
-    def get_dog_by_breed(self, breed):
-        breeds_list = self.get_all_breeds_list()
-        for breed in breeds_list:
-            response = self.session.get(url=f"{self.base_url}/breed/{breed}/images")
+    def get_dog_by_breed(self, query):
+        response = self.session.get(url=f"{self.base_url}/breed/{query}/images")
 
         return response
-
-
