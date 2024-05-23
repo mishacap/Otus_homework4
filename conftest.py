@@ -22,4 +22,7 @@ def get_all_breweries():
     client = BreweryApiClient()
     return client.get_all_breweries_list()
 
-print(get_all_breweries())
+
+def get_all_cities():
+    client = BreweryApiClient()
+    return client.get_all_cities_list()
