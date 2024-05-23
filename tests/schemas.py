@@ -135,3 +135,12 @@ get_dog_by_breed_schema = {
   },
   "required": ["message", "status"]
 }
+
+get_all_sub_breeds_schema = {
+    "type": "object",
+    "properties": {
+        "message": {"type": "array"},
+        "status": {"type": "string"},
+    },
+    "required": ["message", "status"]
+}

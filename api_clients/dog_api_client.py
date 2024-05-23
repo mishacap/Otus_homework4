@@ -32,3 +32,11 @@ class DogApiClient:
     def get_dog_by_breed(self, query):
         response = self.session.get(url=f"{self.base_url}/breed/{query}/images")
         return response
+
+    def get_all_sub_breeds(self, query):
+        response = self.session.get(url=f"{self.base_url}/breed/{query}/list")
+        return response
+
+    def get_random_dog_by_breed(self, query):
+        response = self.session.get(url=f"{self.base_url}/breed/{query}/images/random")
+        return response
