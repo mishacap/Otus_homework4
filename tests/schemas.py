@@ -120,7 +120,7 @@ get_all_breeds_schema = {
     "additionalProperties": False
 }
 
-get_dog_by_breed = {
+get_dog_by_breed_schema = {
   "type": "object",
   "properties": {
     "message": {

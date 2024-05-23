@@ -31,5 +31,4 @@ class DogApiClient:
 
     def get_dog_by_breed(self, query):
         response = self.session.get(url=f"{self.base_url}/breed/{query}/images")
-
         return response
