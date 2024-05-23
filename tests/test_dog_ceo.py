@@ -8,7 +8,8 @@ import json
 
 from jsonschema import validate
 
-from schemas import get_random_dog_schema, get_all_breeds_schema, get_dog_by_breed_schema, get_all_sub_breeds_schema
+from schemas import get_random_dog_schema, get_all_breeds_schema, get_dog_by_breed_schema, get_all_sub_breeds_schema, \
+    get_random_dog_by_breed_schema
 
 
 def test_get_random_dog(dog_api_client):
@@ -46,6 +47,12 @@ def test_get_all_sub_breeds(dog_api_client, query):
     json_response = response.json()
     validate(instance=json_response, schema=get_all_sub_breeds_schema)
 
+@pytest.mark.parametrize("query", get_all_breeds_list())
+def test_get_random_dog_by_breed(dog_api_client, query):
+    response = dog_api_client.get_random_dog_by_breed(query)
+    assert response.status_code == 200
+    json_response = response.json()
+    validate(instance=json_response, schema=get_random_dog_by_breed_schema)
 
 
 
