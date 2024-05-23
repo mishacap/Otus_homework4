@@ -1,13 +1,7 @@
 import pytest
 
 from conftest import dog_api_client, get_all_breeds_list
-
-import requests
-
-import json
-
 from jsonschema import validate
-
 from dogs_schemas import get_random_dog_schema, get_all_breeds_schema, get_dog_by_breed_schema, get_all_sub_breeds_schema, \
     get_random_dog_by_breed_schema
 

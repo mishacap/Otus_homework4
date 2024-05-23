@@ -18,3 +18,6 @@ def brewery_api_client():
     client = BreweryApiClient()
     return client
 
+def get_all_breweries():
+    client = BreweryApiClient()
+    return client.get_all_breweries_list()
