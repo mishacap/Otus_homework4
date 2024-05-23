@@ -1,3 +1,5 @@
+import json
+
 import requests
 
 class BreweryApiClient:
@@ -17,9 +19,14 @@ class BreweryApiClient:
         json_response = response.json()
         if response.status_code == 200:
             all_breweries_ids = [brewery["id"] for brewery in json_response]
-            return list(all_breweries_ids)
+            return all_breweries_ids
         else:
             return []
 
+
     def get_single_brewery_by_id(self, query):
         response = self.session.get(url=f"{self.base_url}/{query}")
+        if response.status_code == 200:
+            return response
+        else:
+            return None
