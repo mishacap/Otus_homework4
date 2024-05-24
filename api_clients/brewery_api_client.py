@@ -68,3 +68,12 @@ class BreweryApiClient:
             return response
         else:
             return None
+
+
+    def get_brewery_random(self):
+        response = self.session.get(url=f"{self.base_url}/random")
+        if response.status_code == 200:
+            return response
+        else:
+            return None
+

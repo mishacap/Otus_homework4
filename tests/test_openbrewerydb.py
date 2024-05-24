@@ -4,7 +4,7 @@ import json
 from conftest import brewery_api_client, get_all_breweries, get_all_cities, get_all_types
 from jsonschema import validate
 from tests.breweries_schemas import get_list_of_breweries_schema, get_single_brewery_by_id_schema, \
-    get_get_breweries_by_city_schema, get_get_breweries_by_type_schema
+    get_get_breweries_by_city_schema, get_get_breweries_by_type_schema, get_brewery_random_schema
 
 
 def test_get_list_of_breweries(brewery_api_client):
@@ -49,6 +49,26 @@ def test_get_breweries_by_type(brewery_api_client, query):
     validate(instance=json_response, schema=get_get_breweries_by_type_schema)
     for brewery in json_response:
         assert brewery["brewery_type"] == query
+
+
+@pytest.mark.parametrize("iteration", ["first",
+                                       "second",
+                                       "third",
+                                       "fourth",
+                                       "fifth",
+                                       "sixth",
+                                       "seventh",
+                                       "eighth",
+                                       "ninth",
+                                       "tenth"])
+def test_get_brewery_random(brewery_api_client, iteration):
+    response = brewery_api_client.get_brewery_random()
+    assert response is not None, "No response received from the API"
+    assert response.status_code == 200
+    json_response = response.json()
+    assert response.json()
+    validate(instance=json_response, schema=get_brewery_random_schema)
+
 
 
 
