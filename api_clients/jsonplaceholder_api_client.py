@@ -35,6 +35,11 @@ class JsonplaceholderApiClient:
                                      json=data)
         return response
 
+    def update_post(self, data, query):
+        response = self.session.put(url=f"{self.base_url}/posts/{query}",
+                                     json=data)
+        return response
+
 
 
 

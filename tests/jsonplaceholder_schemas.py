@@ -15,20 +15,21 @@ get_all_posts_schema = {
 get_post_by_id_schema = {
   "type": "object",
   "properties": {
-    "userId": {"type": "integer"},
     "id": {"type": "integer"},
+    "userId": {"type": "integer"},
     "title": {"type": "string"},
     "body": {"type": "string"}
   },
   "required": ["userId", "id", "title", "body"]
 }
 
-create_post_schema = {
+create_and_update_post_schema = {
   "type": "object",
   "properties": {
+    "id": {"type": "integer"},
     "title": {"type": "string"},
     "body": {"type": "string"},
-    "userId": {"type": "integer"}
+    "userId": {"type": "string"}
   },
   "required": ["title", "body", "userId"]
 }
