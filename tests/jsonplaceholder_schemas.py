@@ -11,3 +11,26 @@ get_all_posts_schema = {
     "required": ["userId", "id", "title", "body"]
   }
 }
+
+get_post_by_id_schema = {
+  "type": "object",
+  "properties": {
+    "userId": {"type": "integer"},
+    "id": {"type": "integer"},
+    "title": {"type": "string"},
+    "body": {"type": "string"}
+  },
+  "required": ["userId", "id", "title", "body"]
+}
+
+create_post_schema = {
+  "type": "object",
+  "properties": {
+    "title": {"type": "string"},
+    "body": {"type": "string"},
+    "userId": {"type": "integer"}
+  },
+  "required": ["title", "body", "userId"]
+}
+
+
