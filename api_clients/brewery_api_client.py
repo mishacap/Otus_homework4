@@ -51,3 +51,21 @@ class BreweryApiClient:
             return response
         else:
             return None
+
+
+    def get_all_breweries_types_list(self):
+        response = self.session.get(url=f"{self.base_url}")
+        json_response = response.json()
+        if response.status_code == 200:
+            all_breweries_types = [brewery["brewery_type"] for brewery in json_response]
+            return all_breweries_types
+        else:
+            return []
+
+
+    def get_breweries_by_type(self, query):
+        response = self.session.get(url=f"{self.base_url}?by_type={query}")
+        if response.status_code == 200:
+            return response
+        else:
+            return None
