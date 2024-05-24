@@ -39,7 +39,7 @@ class BreweryApiClient:
         response = self.session.get(url=f"{self.base_url}")
         json_response = response.json()
         if response.status_code == 200:
-            all_cities_list = [city["city"] for city in json_response]
+            all_cities_list = list(set([city["city"] for city in json_response]))
             return all_cities_list
         else:
             return []
@@ -55,13 +55,12 @@ class BreweryApiClient:
 
     def get_all_breweries_types_list(self):
         response = self.session.get(url=f"{self.base_url}")
-        json_response = response.json()
         if response.status_code == 200:
-            all_breweries_types = [brewery["brewery_type"] for brewery in json_response]
+            json_response = response.json()
+            all_breweries_types = list(set([brewery["brewery_type"] for brewery in json_response]))
             return all_breweries_types
         else:
             return []
-
 
     def get_breweries_by_type(self, query):
         response = self.session.get(url=f"{self.base_url}?by_type={query}")

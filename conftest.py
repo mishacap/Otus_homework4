@@ -28,5 +28,5 @@ def get_all_cities():
     return client.get_all_cities_list()
 
 def get_all_types():
-    client = BreweryApiClient
+    client = BreweryApiClient()
     return client.get_all_breweries_types_list()
