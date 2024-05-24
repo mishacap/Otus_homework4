@@ -1,6 +1,4 @@
 import pytest
-import requests
-import json
 from conftest import brewery_api_client, get_all_breweries, get_all_cities, get_all_types
 from jsonschema import validate
 from tests.breweries_schemas import get_list_of_breweries_schema, get_single_brewery_by_id_schema, \

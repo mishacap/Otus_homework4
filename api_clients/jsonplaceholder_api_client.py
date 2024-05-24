@@ -10,6 +10,12 @@ class JsonplaceholderApiClient:
         self.base_url = base_url
 
 
+    def get_all_posts(self):
+        response = self.session.get(url=f"{self.base_url}/posts")
+        return response
+
+
+
     def get_all_posts_ids(self):
         response = self.session.get(url=f"{self.base_url}/posts")
         json_response = response.json()
@@ -18,6 +24,11 @@ class JsonplaceholderApiClient:
             return all_posts_ids
         else:
             return []
+
+
+    def get_post_by_id(self, query):
+        response = self.session.get(url=f"{self.base_url}/posts/{query}")
+        return response
 
 
 

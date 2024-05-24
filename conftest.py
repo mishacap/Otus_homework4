@@ -32,6 +32,11 @@ def get_all_types():
     client = BreweryApiClient()
     return client.get_all_breweries_types_list()
 
+@pytest.fixture(scope="function")
+def jsonplaceholder_api_client():
+    client = JsonplaceholderApiClient()
+    return client
+
 def get_all_posts_ids():
     client = JsonplaceholderApiClient()
     return client.get_all_posts_ids()
