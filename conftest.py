@@ -2,6 +2,7 @@ import pytest
 
 from api_clients.brewery_api_client import BreweryApiClient
 from api_clients.dog_api_client import DogApiClient
+from api_clients.jsonplaceholder_api_client import JsonplaceholderApiClient
 
 
 @pytest.fixture(scope="function")
@@ -30,3 +31,7 @@ def get_all_cities():
 def get_all_types():
     client = BreweryApiClient()
     return client.get_all_breweries_types_list()
+
+def get_all_posts_ids():
+    client = JsonplaceholderApiClient()
+    return client.get_all_posts_ids()
