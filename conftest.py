@@ -40,3 +40,7 @@ def jsonplaceholder_api_client():
 def get_all_posts_ids():
     client = JsonplaceholderApiClient()
     return client.get_all_posts_ids()
+
+def get_all_users_ids():
+    client = JsonplaceholderApiClient()
+    return client.get_all_users_ids()

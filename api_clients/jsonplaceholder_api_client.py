@@ -40,6 +40,23 @@ class JsonplaceholderApiClient:
                                      json=data)
         return response
 
+    def get_all_users_ids(self):
+        response = self.session.get(url=f"{self.base_url}/posts")
+        json_response = response.json()
+        if response.status_code == 200:
+            all_users_ids = {post["userId"] for post in json_response}
+            return all_users_ids
+        else:
+            return []
+
+    def get_all_post_by_user(self, query):
+        response = self.session.get(url=f"{self.base_url}/posts?userId={query}")
+        return response
+
+
+
+
+
 
 
 

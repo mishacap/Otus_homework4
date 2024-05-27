@@ -34,4 +34,27 @@ create_and_update_post_schema = {
   "required": ["title", "body", "userId"]
 }
 
+get_all_post_by_user_shema = {
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "type": "integer"
+      },
+      "id": {
+        "type": "integer"
+      },
+      "title": {
+        "type": "string"
+      },
+      "body": {
+        "type": "string"
+      }
+    },
+    "required": ["userId", "id", "title", "body"]
+  }
+}
+
+
 
