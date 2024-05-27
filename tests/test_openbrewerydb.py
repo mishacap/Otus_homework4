@@ -66,12 +66,3 @@ def test_get_brewery_random(brewery_api_client, iteration):
     json_response = response.json()
     assert response.json()
     validate(instance=json_response, schema=get_brewery_random_schema)
-
-
-
-
-
-
-
-
-

@@ -71,5 +71,3 @@ def test_get_all_posts_by_user(jsonplaceholder_api_client, query):
     validate(instance=json_response, schema=get_all_post_by_user_shema)
     for post in json_response:
         assert post["userId"] == query
-
-

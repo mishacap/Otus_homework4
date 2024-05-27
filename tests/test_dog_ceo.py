@@ -47,7 +47,3 @@ def test_get_random_dog_by_breed(dog_api_client, query):
     assert response.status_code == 200
     json_response = response.json()
     validate(instance=json_response, schema=get_random_dog_by_breed_schema)
-
-
-
-
